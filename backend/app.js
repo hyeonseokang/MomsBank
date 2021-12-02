@@ -1,9 +1,11 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
+const deposit = require('./routes/deposit');
+const transfer = require('./routes/transfer');
+
 const {sequelize} = require('./models');
 
-const {Account} = require('./models');
 
 const app = express();
 app.set('port', process.env.PORT || 8000);
@@ -21,15 +23,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-app.get('/test', (req, res) => {
-    Account.create({
-        name: '강현서',
-        bank_name: '우리',
-        account_number: '1231231231223',
-    });
-
-    res.send("hi");
-});
+app.use('/deposit', deposit);
+app.use('/transfer', transfer);
 
 app.listen(app.get('port'), ()=>{
     console.log(app.get('port'), '번 포트에서 대기 중');
