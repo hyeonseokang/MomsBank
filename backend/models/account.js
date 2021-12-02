@@ -26,4 +26,9 @@ module.exports = class Account extends Sequelize.Model {
             collate: 'utf8_general_ci',
         });
     }
+
+    static associate(db) {
+        db.Account.hasMany(db.Deposit, {foreignKey: 'account_holder', sourceKey: 'id'});
+        db.Account.hasMany(db.Transfer, {foreignKey: 'account_holder', sourceKey: 'id'});
+    }
 }
