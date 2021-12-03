@@ -3,7 +3,7 @@ const { Account }  = require('../models');
 const { Deposit } = require('../models');
 const router = express.Router();
 
-router.post('/add', async (req,res)=>{
+router.post('/add', async (req, res) => {
     const body = req.body;
     const {name, bank_name, account_number, amount, deadline} = body;
     
@@ -25,7 +25,7 @@ const get_account = async (name, bank_name, account_number) => {
             account_number: account_number,
         }
     });
-    
+
     if (account === null) {
         account = await Account.create({
             name: name,
