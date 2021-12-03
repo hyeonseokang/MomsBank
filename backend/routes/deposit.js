@@ -3,23 +3,38 @@ const { Account }  = require('../models');
 const { Deposit } = require('../models');
 const router = express.Router();
 
-router.get('/add', async (req,res)=>{
-    await Account.create({
-        name: '222',
-        bank_name: '우리',
-        account_number: '12341234',
-    });
-
-    const account = await Account.findOne({});
-    console.log(account);
-
+router.post('/add', async (req,res)=>{
+    const body = req.body;
+    const {name, bank_name, account_number, amount, deadline} = body;
     
+    const account = await get_account(name, bank_name, account_number);
     const deposit = await Deposit.create({
-        amount: 10000,
-        deadline: '2021-12-04',
+        amount: amount,
+        deadline: deadline,
     });
 
     await account.addDeposit(deposit);
+
+    res.status(201);
+    res.send("success");
 });
+
+const get_account = async (name, bank_name, account_number) => {
+    let account = await Account.findOne({
+        where: {
+            account_number: account_number,
+        }
+    });
+    
+    if (account === null) {
+        account = await Account.create({
+            name: name,
+            bank_name: bank_name,
+            account_number: account_number,
+        });
+    }
+
+    return account;
+};
 
 module.exports = router;
