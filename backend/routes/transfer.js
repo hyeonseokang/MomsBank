@@ -20,4 +20,18 @@ router.post('/add', async (req, res) => {
 
     res.status(201).send('success');
 });
+
+router.delete('/remove/:id', async (req, res) => {
+    const id = req.params.id;
+
+    await Transfer.destroy({
+        where: {
+            id: id,
+        }
+    });
+
+    res.status(200);
+    res.send('success');
+});
+
 module.exports = router;
