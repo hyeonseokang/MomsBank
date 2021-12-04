@@ -1,6 +1,7 @@
 const express = require('express');
 const { Account }  = require('../models');
 const { Deposit } = require('../models');
+const { get_account } = require('../util/models');
 const router = express.Router();
 
 router.post('/add', async (req, res) => {
@@ -15,8 +16,7 @@ router.post('/add', async (req, res) => {
 
     await account.addDeposit(deposit);
 
-    res.status(201);
-    res.send("success");
+    res.status(201).send('success');
 });
 
 router.delete('/remove/:id', async (req, res) => {
@@ -31,23 +31,5 @@ router.delete('/remove/:id', async (req, res) => {
     res.status(200);
     res.send('success');
 });
-
-const get_account = async (name, bank_name, account_number) => {
-    let account = await Account.findOne({
-        where: {
-            account_number: account_number,
-        }
-    });
-
-    if (account === null) {
-        account = await Account.create({
-            name: name,
-            bank_name: bank_name,
-            account_number: account_number,
-        });
-    }
-
-    return account;
-};
 
 module.exports = router;
