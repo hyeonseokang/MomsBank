@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrap>
+      <div>
+        Test
+      </div>
+    </Wrap>
   );
 }
+
+const Wrap = styled.div`
+  width: 380px;
+  height: 844px;
+  margin: 0 auto;
+  box-shadow: 0 1px 10px rgb(0 0 0 / 20%);
+  overflow: hidden;
+`;
 
 export default App;
