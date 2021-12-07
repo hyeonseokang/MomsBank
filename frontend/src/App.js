@@ -1,19 +1,12 @@
 import styled from 'styled-components';
 import Block from './components/main/Block';
 import icon from './images/icon/transfer.svg';
+
+import MenuBlock from './components/MenuBlock';
 function App() {
   return (
     <Wrap>
-            <div>
-              <Block icon={icon} mainText="돈 옮기기" subText="현재 쓰시고 계시는 현서 통장에서
-    원하는 곳으로 돈을 옮길수 있습니다.">
-
-          </Block><Block icon={icon} mainText="돈 옮기기" subText="현재 쓰시고 계시는 현서 통장에서
-    원하는 곳으로 돈을 옮길수 있습니22  다.">
-
-          </Block>
-            </div>
-  
+      <Block icon={icon} mainText='Test' subText={"Teste \n TTT"}></Block>
     </Wrap>
   );
 }
@@ -26,11 +19,19 @@ const Wrap = styled.div`
   overflow: hidden;
 `;
 
-const Background = styled.div`
-  background: transparent;
-  position: relative;
-  width: 100%;
-  height: 812px;
+const Title = styled.p`
+  width: 390px;
+  height: 115px;
+
+  font-family: Spoqa Han Sans Neo;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 0px;
+  
+  text-align: center;
+
+  color: #2F69FF;
 `;
 
 export default App;

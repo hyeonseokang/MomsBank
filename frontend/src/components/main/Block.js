@@ -2,11 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 const Block = ({icon, mainText, subText}) => {
+    const sub = subText;
     return (
             <Div>
                 <Icon icon={icon}/>
                 <MainText>{mainText}</MainText>
-                <SubText>{subText}</SubText>
+                <SubText>
+                    {subText}
+                </SubText>
             </Div>
     )
 };
@@ -14,11 +17,8 @@ const Block = ({icon, mainText, subText}) => {
 
 const Div = styled.div`
     position: relative;
-    display: inline-block;
     width: 343px;
     height: 116px;
-
-    margin-bottom: 50px;
 
     background: #DBDBDB;
     border: 1px solid #2F69FF;
@@ -28,53 +28,57 @@ const Div = styled.div`
 
 const Icon = styled.div`
     position: absolute;
-    left: 3.89%;
-    right: 80.56%;
-    top: 25.86%;
-    bottom: 24.71%;
+    width: 64px;
+    height: 64px;
+    left: 9px;
+    top: 26px;
+    bottom: 26px;
 
     background: url(${props=>props.icon}) no-repeat;
 `;
 
 const MainText = styled.p`
-   position: absolute;
-    left: 21.28%;
-    right: 38.78%;
-    top: 13.79%;
-    bottom: 61.21%;
+    position: absolute;
+    width: 137px;
+    height: 29px;
+    left: 73px;
+    top: 16px;
 
     font-family: Spoqa Han Sans Neo;
     font-style: normal;
     font-weight: bold;
     font-size: 25px;
     line-height: 0px;
-    /* or 0% */
 
     display: flex;
     align-items: center;
 
-    color: #7098FF;
+    margin: 0 auto;
+
+    color: #2F69FF;
 `;
 
 const SubText = styled.p`
     position: absolute;
-    left: 21.28%;
-    right: 5.54%;
-    top: 38.79%;
-    bottom: 9.48%;
+    width: 225px;
+    height: 40px;
+    left: 73px;
+    top: 55px;
 
     font-family: Spoqa Han Sans Neo;
     font-style: normal;
     font-weight: bold;
     font-size: 15px;
     line-height: 20px;
-    /* or 133% */
 
     display: flex;
     align-items: center;
 
+    margin: 0 auto;
+
     color: #112364;
 
+    white-space: pre-wrap;
 `;
 
 export default Block;
