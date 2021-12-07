@@ -1,16 +1,30 @@
 import styled from 'styled-components';
-import Title from './components/Title';
+import Main from './components/main';
 import Block from './components/main/Block';
-import icon from './images/icon/transfer.svg';
-
-import MenuBlock from './components/MenuBlock';
+import icon from './images/icon/transfer.svg'
 function App() {
   return (
     <Wrap>
-      <Title></Title>
+      <Block icon={icon} mainText="Test" subText="Test2"></Block>
     </Wrap>
   );
 }
+
+const Test = styled.div`
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border: 1px solid #0000ff;
+`;
+
+const Test2 = styled.div`
+  display: inline-block;
+  width: 100px;
+  height: 120px;
+  background-color: white;
+  border: 1px solid #0000ff;
+`;
 
 const Wrap = styled.div`
   width: 380px;

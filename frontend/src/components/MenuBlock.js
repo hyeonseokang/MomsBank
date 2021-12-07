@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const MenuBlock = ({children}) => {
+const MenuBlock = ({children, height}) => {
     return (
-        <Div>
+        <Div height = {height}>
             {children}
         </Div>
     )
@@ -12,12 +12,14 @@ const MenuBlock = ({children}) => {
 const Div = styled.div`
     position: relative;
     width: 360px;
-    height: 150px;
+    height: ${props=>props.height};
 
     background: #F0F0F0;
     border: 0.1px solid #2F69FF;
     box-sizing: border-box;
     border-radius: 20px;
+
+    margin: auto;
 `;
 
 export default MenuBlock;

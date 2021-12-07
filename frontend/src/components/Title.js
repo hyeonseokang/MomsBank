@@ -6,24 +6,20 @@ import titleIcon from '../images/icon/title.svg';
 const Title = () => {
     return (
         <Wrap>
-            <TitleText>현서&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;은행</TitleText>
-            <TitleIcon src={titleIcon}/>
+          <TitleText>현서&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;은행</TitleText>
+          <TitleIcon src={titleIcon}/>
         </Wrap>
     )
 }
 
 const Wrap = styled.div`
-    position: absolute;
-    top: 0px;
     width: 100%;
-    height: 107px;
 `;
 
 const TitleText = styled.p`
-  width: 390px;
-  height: 115px;
+  width: 100%;
   margin: auto;
-  margin-top: 59px;
+  margin-top: 80px;
 
   font-family: Spoqa Han Sans Neo;
   font-style: normal;
@@ -37,11 +33,11 @@ const TitleText = styled.p`
 `;
 
 const TitleIcon = styled.img`
-  position: absolute;
+  position: relative;
 
   width: 56px;
   height: 56px;
-  top: 25px;
+  top: -30px;
   left: 50%;
   margin-left: -28px;
   margin-top: 0px;
