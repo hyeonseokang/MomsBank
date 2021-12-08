@@ -8,13 +8,15 @@ import MenuBlock from '../MenuBlock';
 import {useSelector, useDispatch} from 'react-redux';
 import {getTransfers, addTransfer} from '../../modules/transfer';
 import { useEffect } from 'react';
+import { addDeposit, getDeposits } from '../../modules/deposit';
+
 const Main = () => {
     
-  const {data, loading, error} = useSelector(state => state.transfers);
+  const {data, loading, error} = useSelector(state => state.deposits);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getTransfers());
+    dispatch(getDeposits());
   }, [dispatch]);
 
   if (loading == true){
@@ -24,9 +26,12 @@ const Main = () => {
     return (
         <Div onClick = {
           () => {
-            dispatch(addTransfer({
-              amount:1818,
-              sbank_name:'카카오',
+            dispatch(addDeposit({
+              "name": "김철수",
+              "bank_name": "케이뱅크",
+              "account_number": "123412343333",
+              "amount": 1111,
+              "deadline": "2021-12-15"
             }));
           }
         }>

@@ -11,7 +11,8 @@ const ADD_TRANSFER_SUCCESS = 'ADD_TRANSFER_SUCCESS'
 export const getTransfers = () => ({type: GET_TRANSFERS});
 export const addTransfer = (params) => ({
     ...params,
-    type: ADD_TRANSFER})
+    type: ADD_TRANSFER
+})
 
 function* getTransfersSaga() {
     try{
@@ -28,9 +29,9 @@ function* getTransfersSaga() {
     }
 }
 
-function* addTransferSaga({name, bank_name, account_number, amount, sbank_name}) {
+function* addTransferSaga(params) {
     try {
-        const status = yield call(addTransferAPI, {name, bank_name, account_number, amount, sbank_name});
+        const status = yield call(addTransferAPI, params);
         yield put({
             type: ADD_TRANSFER_SUCCESS,
         });

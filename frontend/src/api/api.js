@@ -15,15 +15,29 @@ export async function getTransfersAPI() {
     }
 }
 
-export async function addTransferAPI({name, bank_name, account_number, amount, sbank_name}) {
+export async function getDepositsAPI() {
     try {
-        const response = await baseService.post('/transfer/add', {
-            name: name,
-            bank_name: bank_name,
-            account_number: account_number,
-            amount:amount,
-            sbank_name:sbank_name,
-        });
+        const response = await baseService.get('/getall/deposit');
+        return response.data;
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+
+export async function addTransferAPI(params) {
+    try {
+        const response = await baseService.post('/transfer/add', params);
+        return response.status;
+    } catch(e) {
+        console.log(e);
+        return e;
+    }
+}
+
+export async function addDepositAPI(params) {
+    try {
+        const response = await baseService.post('/deposit/add', params);
         return response.status;
     } catch(e) {
         console.log(e);
