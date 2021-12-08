@@ -9,6 +9,7 @@ const Block = ({icon, mainText, subText}) => {
                 </Icon>
                 <InlineBlock>
                     <MainText>{mainText}</MainText>
+                    <SubText>{subText}</SubText>
                 </InlineBlock>
             </Div>
     )
@@ -30,7 +31,7 @@ const Icon = styled.div`
     display: inline-block;
     width: 64px;
     height: 116px;
-    margin-left: 9px;
+    margin-left: 0px;
     vertical-align: middle;
     >img{
         position: absolute;
@@ -47,7 +48,6 @@ const InlineBlock = styled.div`
 `;
 
 const MainText = styled.div`
-    display: inline-block;
     height: 29px;
     width: 137px;
     font-family: Spoqa Han Sans Neo;
@@ -55,31 +55,27 @@ const MainText = styled.div`
     font-weight: bold;
     font-size: 25px;
     line-height: 0px;
+    float: left;
+    margin-top: 30px;
 
     color: #2F69FF;
 `;
 
 const SubText = styled.p`
-    position: absolute;
     width: 225px;
     height: 40px;
-    left: 73px;
-    top: 55px;
+
+    float: left;
+    margin-top: 0px;
 
     font-family: Spoqa Han Sans Neo;
     font-style: normal;
     font-weight: bold;
     font-size: 15px;
     line-height: 20px;
-
-    display: flex;
-    align-items: center;
-
-    margin: 0 auto;
-
     color: #112364;
 
-    white-space: pre-wrap;
+    white-space: pre-line;
 `;
 
 export default Block;
