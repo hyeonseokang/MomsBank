@@ -6,7 +6,7 @@ import RepayDisplay from './RepayDisplay'
 import MenuBlock from '../MenuBlock';
 
 import {useSelector, useDispatch} from 'react-redux';
-import {getTransfers} from '../../modules/transfer';
+import {getTransfers, addTransfer} from '../../modules/transfer';
 import { useEffect } from 'react';
 const Main = () => {
     
@@ -22,7 +22,14 @@ const Main = () => {
   }
 
     return (
-        <Div>
+        <Div onClick = {
+          () => {
+            dispatch(addTransfer({
+              amount:1818,
+              sbank_name:'카카오',
+            }));
+          }
+        }>
             <Title></Title>
             <MenuBlockDiv>
                 <RepayDisplay/>
