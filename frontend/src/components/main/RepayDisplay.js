@@ -11,7 +11,7 @@ const RepayDisplay = ({dDay}) => {
             <InlineBlock>
                 <MainText>남은 상환 기간까지</MainText>
                 {dDay !== null? 
-                <SubText>{dDay}일 남음</SubText>:<SubText>없음</SubText>}
+                <SubText>{dDay} 남음</SubText>:<SubText>없음</SubText>}
             </InlineBlock>
         </MenuBlock>
     )
