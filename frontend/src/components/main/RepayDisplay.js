@@ -3,14 +3,15 @@ import styled from 'styled-components';
 import MenuBlock from '../MenuBlock';
 import Timer from '../../images/icon/timer.svg';
 
-const RepayDisplay = () => {
+const RepayDisplay = ({dDay}) => {
     return (
         <MenuBlock  height = "150px">
             <TitleText>상환</TitleText>
             <Icon><img src={Timer}/></Icon>
             <InlineBlock>
                 <MainText>남은 상환 기간까지</MainText>
-                <SubText>2일 남음</SubText>
+                {dDay !== null? 
+                <SubText>{dDay}일 남음</SubText>:<SubText>없음</SubText>}
             </InlineBlock>
         </MenuBlock>
     )
