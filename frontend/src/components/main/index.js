@@ -5,7 +5,22 @@ import Title from '../Title'
 import RepayDisplay from './RepayDisplay'
 import MenuBlock from '../MenuBlock';
 
+import {useSelector, useDispatch} from 'react-redux';
+import {getTransfers} from '../../modules/transfer';
+import { useEffect } from 'react';
 const Main = () => {
+    
+  const {data, loading, error} = useSelector(state => state.transfers);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTransfers());
+  }, [dispatch]);
+
+  if (loading == true){
+    console.log(data);
+  }
+
     return (
         <Div>
             <Title></Title>

@@ -1,13 +1,24 @@
 import styled from 'styled-components';
 import Main from './components/main';
-import Block from './components/main/Block';
-import icon from './images/icon/transfer.svg'
+import rootReducer, {rootSaga} from './modules';
+import createSagaMiddleware from 'redux-saga';
+import { Provider } from 'react-redux';
+import {createStore, applyMiddleware}from 'redux';
+
+const sagaMiddleWare = createSagaMiddleware();
+const store = createStore(
+  rootReducer,
+  applyMiddleware(sagaMiddleWare)
+);
+
+sagaMiddleWare.run(rootSaga);
 function App() {
   return (
-    <Wrap>
-      <Block icon={icon} mainText="돈 옮기기" subText={"현재 쓰시고 계시는 현서 통장에서\n원하는 곳으로 돈을 옮길수 있습니다."}></Block>
-      <Block icon={icon} mainText="Test" subText="Test"></Block>
-    </Wrap>
+    <Provider store = {store}>
+  <Wrap>
+        <Main/>
+      </Wrap>
+    </Provider>
   );
 }
 
