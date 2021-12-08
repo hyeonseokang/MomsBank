@@ -10,7 +10,7 @@ const Main = () => {
         <Div>
             <Title></Title>
             <MenuBlockDiv>
-                <RepayDisplay/>
+                <RepayDisplay dDay={2}/>
                 <MenuBlock height = "68px"/>
                 <MenuBlock height = "427px"/>
             </MenuBlockDiv>

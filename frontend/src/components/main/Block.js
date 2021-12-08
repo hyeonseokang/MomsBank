@@ -32,7 +32,6 @@ const Icon = styled.div`
     width: 64px;
     height: 116px;
     margin-left: 0px;
-    vertical-align: middle;
     >img{
         position: absolute;
         top:26px;
