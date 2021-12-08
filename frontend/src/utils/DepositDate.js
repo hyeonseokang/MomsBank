@@ -22,7 +22,7 @@ const getDepositDDay = (deposits) => {
         return `${hour}시간 ${minute}분 ${second}초`;
     }
 
-    return dDay + '일';
+    return parseInt(dDay) + '일';
 };
 
 export default getDepositDDay;
