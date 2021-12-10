@@ -8,12 +8,16 @@ import { getDeposits } from '../../modules/deposit';
 import Title from '../Title'
 import RepayDisplay from './RepayDisplay'
 import MenuBlock from '../MenuBlock';
+import Block from './Block';
 
 import moneyIcon from '../../images/icon/check.svg';
 import nextIcon from '../../images/icon/next.svg'
 import getDepositDDay from '../../utils/DepositDate';
 
-const Main = () => {
+import transferIcon from '../../images/icon/transfer.svg';
+import bankIcon from '../../images/icon/bank.svg';
+
+const Main = ({history}) => {
   const dispatch = useDispatch();
   const {data} = useSelector(state => state.deposits);
   const [dDay, setDDay] = useState(getDepositDDay(data));
@@ -34,19 +38,28 @@ const Main = () => {
       return () => clearInterval(interval.current);
     }, []);
 
+    const GoCheck = () => {
+      history.push('/check');
+    };
     return (
         <Div>
             <Title></Title>
             <MenuBlockDiv>
                 <RepayDisplay dDay={dDay}/>
-                <MenuBlock height = "68px">
+                <MenuBlock onClick={GoCheck} height = "68px">
                   <MoneyIcon>
                     <img src={moneyIcon}/>
                   </MoneyIcon>
                   <Text>조회</Text>
                   <NextIcon src={nextIcon}/>
                 </MenuBlock>
-                <MenuBlock height = "427px"/>
+                <MenuBlock height = "427px">
+                  <ActivityText>
+                    무엇을 하시겠습니까?
+                  </ActivityText>
+                  <Block icon={transferIcon} mainText={"돈 옮기기"} subText={"현재 쓰시고 계시는 현서 통장에서\n원하는 곳으로 돈을 옮길수 있습니다."}/>
+                  <Block icon={bankIcon} mainText={"입금 요청"} subText={"돈을 빌립니다.\n기한내에 돈을 갚아야 합니다."}/>
+                </MenuBlock>
             </MenuBlockDiv>
         </Div>
     )
@@ -74,10 +87,11 @@ const MoneyIcon = styled.div`
 `;
 
 const NextIcon = styled.img`
+  position: absolute;
   width: 48px;
   height: 48px;
-  float: right;
-  margin:auto;
+  left: 312px;
+  top: 10px;
 `;
 
 const Text = styled.div`
@@ -97,4 +111,23 @@ const Text = styled.div`
   color: #2F69FF;
 `;
 
+const ActivityText = styled.div`
+  margin-top: 37px;
+  margin-bottom: 46px;
+  margin-left: 45px;
+  width: 271px;
+
+  font-family: Spoqa Han Sans Neo;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 0px;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #2F69FF;
+
+`;
 export default Main;

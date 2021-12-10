@@ -3,11 +3,12 @@ import styled from 'styled-components';
 
 import titleIcon from '../images/icon/title.svg';
 
-const Title = () => {
+const Title = ({explan}) => {
     return (
         <Wrap>
           <TitleText>현서&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;은행</TitleText>
           <TitleIcon src={titleIcon}/>
+          <SubText>{explan}</SubText>
         </Wrap>
     )
 }
@@ -41,6 +42,24 @@ const TitleIcon = styled.img`
   left: 50%;
   margin-left: -28px;
   margin-top: 0px;
+`;
+
+const SubText = styled.div`
+  width: 56px;
+  height: 0px;
+  margin-left: 167px;
+
+  font-family: Spoqa Han Sans Neo;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 0px;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #2F69FF;
 `;
 
 export default Title;

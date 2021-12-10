@@ -17,7 +17,6 @@ const Block = ({icon, mainText, subText}) => {
 
 
 const Div = styled.div`
-    position: relative;
     width: 343px;
     height: 116px;
 
@@ -25,6 +24,9 @@ const Div = styled.div`
     border: 1px solid #2F69FF;
     box-sizing: border-box;
     border-radius: 10px;
+
+    margin-bottom:20px;
+    margin-left: 7px;
 `;
 
 const Icon = styled.div`
@@ -33,8 +35,8 @@ const Icon = styled.div`
     height: 116px;
     margin-left: 0px;
     >img{
-        position: absolute;
-        top:26px;
+        position: relative;
+        top: -26px;
         width: 64px;
         height: 64px;
     }

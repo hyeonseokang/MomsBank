@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const MenuBlock = ({children, height}) => {
+const MenuBlock = ({children, height, onClick}) => {
     return (
-        <Div height = {height}>
+        <Div onClick={onClick} height = {height}>
             {children}
         </Div>
     )

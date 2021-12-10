@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import Main from './components/main';
+import Check from './components/check/Check';
+import {Route, Routes} from 'react-router-dom';
 
 function App() {
   return (
       <Wrap>
-        <Main/>
+          <Route path="/" exact={true} component={Main} />
+          <Route path="/check" component = {Check} />
       </Wrap>
   );
 }
