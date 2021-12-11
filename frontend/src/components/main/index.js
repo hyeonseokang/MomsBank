@@ -28,14 +28,12 @@ const Main = ({history}) => {
     }, [dispatch]);
 
     useEffect(() => {
-      setDDay(getDepositDDay(data));
+      interval.current = setInterval(() => {
+        console.log("hi")
+      }, 1000);
     }, [data]);
 
     useEffect(() => {
-      interval.current = setInterval(() => {
-        dispatch(getDeposits());
-      }, 1000);
-      return () => clearInterval(interval.current);
     }, []);
 
     const GoCheck = () => {
