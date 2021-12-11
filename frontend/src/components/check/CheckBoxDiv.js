@@ -1,11 +1,26 @@
 import styled from "styled-components";
+import {useState, useEffect, useRef} from 'react';
 
 import {getDepositDDay, getDateString} from '../../utils/DepositDate';
 const CheckBoxDiv = ({deposit}) => {
+    const [DDay, setDDay] = useState(getDepositDDay(deposit));
+    const interval = useRef(null);
+
+    useEffect(() => {
+        setDDay(getDepositDDay(deposit));
+        interval.current = setInterval(() => {
+            setDDay(getDepositDDay(deposit));
+        }, 1000);
+    
+        return ()=>{
+            clearInterval(interval.current);
+        };
+    }, [deposit]);
+
     return (
         <Div>
             <TitleText>{getDateString(deposit.createdAt)} 빌린 {deposit.amount}</TitleText>
-            <SubText>{getDateString(deposit.deadline)}까지 {getDepositDDay(deposit)} 남았습니다.</SubText>
+            <SubText>{getDateString(deposit.deadline)}까지 {DDay} 남았습니다.</SubText>
         </Div>
     )
 };
