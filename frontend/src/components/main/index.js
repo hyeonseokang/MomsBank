@@ -12,7 +12,7 @@ import Block from './Block';
 
 import moneyIcon from '../../images/icon/check.svg';
 import nextIcon from '../../images/icon/next.svg'
-import getDepositDDay from '../../utils/DepositDate';
+import {getDepositDDay} from '../../utils/DepositDate';
 
 import transferIcon from '../../images/icon/transfer.svg';
 import bankIcon from '../../images/icon/bank.svg';
@@ -20,21 +20,24 @@ import bankIcon from '../../images/icon/bank.svg';
 const Main = ({history}) => {
   const dispatch = useDispatch();
   const {data} = useSelector(state => state.deposits);
-  const [dDay, setDDay] = useState(getDepositDDay(data));
+  const [dDay, setDDay] = useState(getDepositDDay(data[0]));
   const interval = useRef(null);
 
     useEffect(() => {
       dispatch(getDeposits());
+      console.log("??>?");
     }, [dispatch]);
 
     useEffect(() => {
+      setDDay(getDepositDDay(data[0]));
       interval.current = setInterval(() => {
-        console.log("hi")
+        setDDay(getDepositDDay(data[0]));
       }, 1000);
-    }, [data]);
 
-    useEffect(() => {
-    }, []);
+      return ()=>{
+        clearInterval(interval.current);
+      };
+    }, [data]);
 
     const GoCheck = () => {
       history.push('/check');

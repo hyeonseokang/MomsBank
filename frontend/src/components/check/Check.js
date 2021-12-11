@@ -4,6 +4,7 @@ import { getDeposits } from '../../modules/deposit';
 
 import styled from 'styled-components'
 import Title from '../Title';
+import CheckBoxDiv from './CheckBoxDiv';
 
 const Check = ({history}) => {
     const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const Check = ({history}) => {
             <Title explan="조회"/>
             <MiddleText>남은 상환 개수</MiddleText>
             <RemainText>{data.length}개</RemainText>
+            {data.map(deposit => <CheckBoxDiv key={deposit.id}deposit={deposit}/>)}
         </div>
     )
 };
@@ -74,13 +76,13 @@ const RemainText = styled.p`
     left: 166px;
     top: 80px;
     margin-top:0px;
+    margin-bottom: 95px;
 
     font-family: Spoqa Han Sans Neo;
     font-style: normal;
     font-weight: bold;
     font-size: 30px;
     line-height: 35px;
-    /* identical to box height, or 117% */
 
     display: flex;
     align-items: center;
@@ -88,5 +90,4 @@ const RemainText = styled.p`
 
     color: #112364;
 `;
-
 export default Check;

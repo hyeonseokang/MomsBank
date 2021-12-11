@@ -1,9 +1,6 @@
 const getDepositDDay = (deposits) => {
     try {
-        if (deposits.length === 0)
-        return -1;
-
-        const {deadline} = deposits[0];
+        const {deadline} = deposits;
         const nowDate = new Date();
         const endDate = new Date(deadline);
         endDate.setDate(endDate.getDate()+1)
@@ -29,4 +26,13 @@ const getDepositDDay = (deposits) => {
     }
 };
 
-export default getDepositDDay;
+const getDateString = (dateString) => {
+    const date = new Date(dateString)
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+
+    return `${year}년 ${month}월 ${day}일`;
+};
+
+export {getDepositDDay, getDateString} ;
