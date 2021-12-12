@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Main from './components/main';
 import Check from './components/check/Check';
+import Transfer from './components/transfer';
 import {Route, Routes} from 'react-router-dom';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <Wrap>
           <Route path="/" exact={true} component={Main} />
           <Route path="/check" component = {Check} />
+          <Route path="/transfer" component = {Transfer} />
       </Wrap>
   );
 }

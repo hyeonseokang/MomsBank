@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getDeposits } from '../../modules/deposit';
 
 import Title from '../Title'
+import Transfer from '../transfer';
 import RepayDisplay from './RepayDisplay'
 import MenuBlock from '../MenuBlock';
 import Block from './Block';
@@ -25,7 +26,6 @@ const Main = ({history}) => {
 
     useEffect(() => {
       dispatch(getDeposits());
-      console.log("??>?");
     }, [dispatch]);
 
     useEffect(() => {
@@ -42,6 +42,11 @@ const Main = ({history}) => {
     const GoCheck = () => {
       history.push('/check');
     };
+
+    const GoTransfer = () => {
+      history.push('/transfer');
+    }
+
     return (
         <Div>
             <Title></Title>
@@ -58,7 +63,7 @@ const Main = ({history}) => {
                   <ActivityText>
                     무엇을 하시겠습니까?
                   </ActivityText>
-                  <Block icon={transferIcon} mainText={"돈 옮기기"} subText={"현재 쓰시고 계시는 현서 통장에서\n원하는 곳으로 돈을 옮길수 있습니다."}/>
+                  <Block onClick = {GoTransfer} icon={transferIcon} mainText={"돈 옮기기"} subText={"현재 쓰시고 계시는 현서 통장에서\n원하는 곳으로 돈을 옮길수 있습니다."}/>
                   <Block icon={bankIcon} mainText={"입금 요청"} subText={"돈을 빌립니다.\n기한내에 돈을 갚아야 합니다."}/>
                 </MenuBlock>
             </MenuBlockDiv>

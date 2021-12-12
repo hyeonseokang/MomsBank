@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const Block = ({icon, mainText, subText}) => {
+const Block = ({icon, mainText, subText, onClick}) => {
     return (
-            <Div>
+            <Div onClick={onClick}>
                 <Icon>
                     <img src={icon}/>
                 </Icon>

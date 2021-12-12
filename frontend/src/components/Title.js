@@ -45,9 +45,8 @@ const TitleIcon = styled.img`
 `;
 
 const SubText = styled.div`
-  width: 56px;
-  height: 0px;
-  margin-left: 167px;
+  width: 100%;
+  margin-left: 0px;
 
   font-family: Spoqa Han Sans Neo;
   font-style: normal;
@@ -55,11 +54,9 @@ const SubText = styled.div`
   font-size: 30px;
   line-height: 0px;
 
-  display: flex;
-  align-items: center;
-  text-align: center;
-
   color: #2F69FF;
+
+  text-align: center;
 `;
 
 export default Title;

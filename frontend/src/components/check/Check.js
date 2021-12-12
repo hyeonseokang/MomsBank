@@ -5,6 +5,7 @@ import { getDeposits } from '../../modules/deposit';
 import styled from 'styled-components'
 import Title from '../Title';
 import CheckBoxDiv from './CheckBoxDiv';
+import PrevButton from '../PrevButton';
 
 const Check = ({history}) => {
     const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Check = ({history}) => {
 
     return (
         <div>
-            <PrevText onClick={GoHome}>이전</PrevText>
+            <PrevButton onClick={GoHome} />
             <Title explan="조회"/>
             <MiddleText>남은 상환 개수</MiddleText>
             <RemainText>{data.length}개</RemainText>
@@ -28,25 +29,6 @@ const Check = ({history}) => {
         </div>
     )
 };
-
-const PrevText = styled.div`
-    position: relative;
-    width: 266px;
-    height: 30px;
-    left: 15px;
-    top: 9px;
-
-    font-family: Spoqa Han Sans Neo;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 0px;
-
-    display: flex;
-    align-items: center;
-
-    color: #505791;
-`;
 
 const MiddleText = styled.p`
     position: relative;
