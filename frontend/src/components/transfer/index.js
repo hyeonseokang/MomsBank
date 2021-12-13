@@ -6,8 +6,12 @@ import Title from "../Title";
 import BankSelect from "./BankSelect";
 import MoneySelect from "../MoneySelect";
 import BankInput from "../BankInput";
+import Confirm from "./Confirm";
+import { useDispatch } from 'react-redux';
+import { addTransfer } from "../../modules/transfer";
 
 const Transfer = ({history}) => {
+    const dispatch = useDispatch();
     const GoHome = () => {
         history.push('/');
     };
@@ -51,15 +55,22 @@ const Transfer = ({history}) => {
         });
     };
 
+    const createTransfer = () => {
+        dispatch(addTransfer(transfer));
+        history.push('/success');
+    };
+
     const getInputComponent = (id) =>{
         console.log(id);
         if (id === 0)
-            return <BankSelect onClick={(value)=>{selectStep("bank_name",value, id);}} />
+            return <BankSelect onClick={(value)=>{selectStep("sbank_name",value, id);}} />
         else if(id === 1)
-            return <MoneySelect titleText={`현서의 (${transfer.bank_name}) 계좌에서`} nextClick={(value)=>{selectStep("amount", value, id);}}/>
+            return <MoneySelect titleText={`현서의 (${transfer.sbank_name}) 계좌에서`} nextClick={(value)=>{selectStep("amount", value, id);}}/>
         else if(id === 2)
             return <BankInput nextClick={(data) => {selectBankInput(data, id);}}/>
-        console.log(id);
+        else if(id === 3)
+            return <Confirm onClick={createTransfer} amount="100000" text={`원을\n현서의 ${transfer.sbank_name} 계좌에서\n\n ${transfer.name} ${transfer.bank_name}
+            ${transfer.account_number} 으로 \n 옮길게요.`}/>
     }
 
 
