@@ -10,8 +10,8 @@ const BankSelect = ({onClick}) => {
         <div>
             <Title>{"돈을 인출할 은행을\n선택 해주세요"}</Title>
             <MenuBlock height={"427px"}>
-                <BankButton icon={nhIcon} text={"농협 은행"} onClick={onClick}/>
-                <BankButton icon={shIcon} text={"신한 은행"} onClick={onClick}/>
+                <BankButton icon={nhIcon} text={"농협"} onClick={onClick}/>
+                <BankButton icon={shIcon} text={"신한"} onClick={onClick}/>
             </MenuBlock>
         </div>
     )

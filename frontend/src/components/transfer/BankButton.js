@@ -7,7 +7,7 @@ const BankButton = ({icon, text, onClick}) => {
                 <img src={icon} />
             </BankButtonDiv>
             <Text>
-                {text}
+                {text} 은행
             </Text>
         </Div>
     )

@@ -4,6 +4,7 @@ import {useState} from 'react';
 import PrevButton from "../PrevButton";
 import Title from "../Title";
 import BankSelect from "./BankSelect";
+import MoneySelect from "../MoneySelect";
 
 const Transfer = ({history}) => {
     const GoHome = () => {
@@ -20,24 +21,31 @@ const Transfer = ({history}) => {
     }
     const [transfer, setTransfer] = useState({});
     const [inputId, setInputId] = useState(0);
-    const selectBank = (bank_name) => {
+    
+
+    const selectStep = (name, value, id) => {
         setTransfer({
             ...transfer,
-            bank_name: bank_name,
-        })
-        setInputId(2);
-        setPrevClick({
-            onClick: () =>{ setInputId(0);}
+            [name]: value,
         });
+        setInputId(id + 1);
         setPrevClick(()=>{
-            setInputId(0);
-            setPrevClick(GoHome);
+            setInputId(id);
+            if (id === 0)
+                setPrevClick(GoHome);
+            else
+                setPrevClick(()=>{setInputId(id - 1);})
         })
     }
 
     const getInputComponent = (id) =>{
+        console.log(id);
         if (id === 0)
-            return <BankSelect onClick={selectBank} />
+            return <BankSelect onClick={(value)=>{selectStep("bank_name",value, id);}} />
+        else if(id === 1)
+            return <MoneySelect titleText={`현서의 (${transfer.bank_name}) 계좌에서`} nextClick={(value)=>{selectStep("amount", value, id);}}/>
+
+        console.log(id);
     }
 
 
