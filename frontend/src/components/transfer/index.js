@@ -57,7 +57,10 @@ const Transfer = ({history}) => {
 
     const createTransfer = () => {
         dispatch(addTransfer(transfer));
-        history.push('/success');
+        history.push({
+            pathname: '/success',
+            state: {titleText: "돈 옮기기"}
+        });
     };
 
     const getInputComponent = (id) =>{

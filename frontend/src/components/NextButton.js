@@ -32,7 +32,9 @@ const ButtonText = styled.p`
     color: #FFFFFF;
 
     margin-top: 10px;
-    margin-left: 160px;
+    margin-left: 0px;
+
+    text-align: center;
 `;
 
 export default NextButton;
