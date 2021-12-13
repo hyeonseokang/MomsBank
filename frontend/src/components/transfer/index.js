@@ -5,6 +5,7 @@ import PrevButton from "../PrevButton";
 import Title from "../Title";
 import BankSelect from "./BankSelect";
 import MoneySelect from "../MoneySelect";
+import BankInput from "../BankInput";
 
 const Transfer = ({history}) => {
     const GoHome = () => {
@@ -38,13 +39,26 @@ const Transfer = ({history}) => {
         })
     }
 
+    const selectBankInput = (data, id) => {
+        setTransfer({
+            ...transfer,
+            ...data,
+        });
+        setInputId(id + 1);
+        setPrevClick(()=>{
+            setInputId(id);
+            setPrevClick(()=>{setInputId(id - 1);})
+        });
+    };
+
     const getInputComponent = (id) =>{
         console.log(id);
         if (id === 0)
             return <BankSelect onClick={(value)=>{selectStep("bank_name",value, id);}} />
         else if(id === 1)
             return <MoneySelect titleText={`현서의 (${transfer.bank_name}) 계좌에서`} nextClick={(value)=>{selectStep("amount", value, id);}}/>
-
+        else if(id === 2)
+            return <BankInput nextClick={(data) => {selectBankInput(data, id);}}/>
         console.log(id);
     }
 
