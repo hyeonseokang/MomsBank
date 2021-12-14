@@ -68,11 +68,11 @@ const Transfer = ({history}) => {
         if (id === 0)
             return <BankSelect onClick={(value)=>{selectStep("sbank_name",value, id);}} />
         else if(id === 1)
-            return <MoneySelect titleText={`현서의 (${transfer.sbank_name}) 계좌에서`} nextClick={(value)=>{selectStep("amount", value, id);}}/>
+            return <MoneySelect titleText={`현서의 (${transfer.sbank_name}) 계좌에서`} subText="출금 할게요." nextClick={(value)=>{selectStep("amount", value, id);}}/>
         else if(id === 2)
-            return <BankInput nextClick={(data) => {selectBankInput(data, id);}}/>
+            return <BankInput subText="비워 두면 현서가 알아서 가져갑니다." nextClick={(data) => {selectBankInput(data, id);}}/>
         else if(id === 3)
-            return <Confirm onClick={createTransfer} amount="100000" text={`원을\n현서의 ${transfer.sbank_name} 계좌에서\n\n ${transfer.name} ${transfer.bank_name}
+            return <Confirm onClick={createTransfer} amount={transfer.amount} text={`원을\n현서의 ${transfer.sbank_name} 계좌에서\n\n ${transfer.name} ${transfer.bank_name}
             ${transfer.account_number} 으로 \n 옮길게요.`}/>
     }
 

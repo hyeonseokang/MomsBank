@@ -4,7 +4,7 @@ import {useState} from 'react';
 import MenuBlock from './MenuBlock';
 import NextButton from "./NextButton";
 
-const BankInput = ({nextClick}) =>{
+const BankInput = ({nextClick, subText}) =>{
     const [bankName, setBankName] = useState('');
     const [accountNumber, setAccountNumber] = useState('');
     const [name, setName] = useState('');
@@ -29,7 +29,7 @@ const BankInput = ({nextClick}) =>{
     return (
         <div>
             <TitleText>돈을 받을 계좌를 적어주세요.</TitleText>
-            <SubText>비워 두면 현서가 알아서 가져갑니다.</SubText>
+            <SubText>{subText}</SubText>
             <MenuBlockDiv>
                 <MenuBlock height="106px">
                     <InputText>은행 이름</InputText>

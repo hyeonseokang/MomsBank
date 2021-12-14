@@ -1,39 +1,38 @@
 import styled from "styled-components";
 import {useState} from 'react';
 
-import MenuBlock from './MenuBlock';
-import NextButton from "./NextButton";
+import MenuBlock from '../MenuBlock';
+import NextButton from "../NextButton";
 
-const MoneySelect = ({titleText, nextClick, subText}) =>{
-    const [money, setMoney] = useState('');
-    const onChange = (e) => {
-        setMoney(e.target.value);
-    };
+import {getDateString} from '../../utils/DepositDate';
+
+const DeadLineInput = ({amount, nextClick}) => {
+    const [deadline, setDeadLine] = useState("222");
+
+    const onChangeDate = (e) => {
+        const date = getDateString(e.target.value);
+        setDeadLine(date);
+    }
 
     const onClick = () => {
-        nextClick(money);
+        nextClick(deadline);
     };
-
     return (
         <div>
-            <TitleText>{titleText}</TitleText>
-            <SubText>{money===''?0:money} 원을 {subText}</SubText>
+            <TitleText>{deadline} 까지</TitleText>
+            <SubText>{`${amount}원을 상환 할게요.`}</SubText>
             <MenuBlock height="106px">
-                <InputMoney>돈</InputMoney>
-                <MoneyInput type="number" onChange={onChange} autoFocus placeholder={"필수로 입력"}></MoneyInput>
-            </MenuBlock>
-            <NextButton mt="320px" text="다음" onClick={onClick}/>
+                <InputText>날짜</InputText>
+                <Input type="date" onChange={onChangeDate} autoFocus></Input>
+            </MenuBlock>    
+            <NextButton onClick={onClick} text = "다음" mt = "320px" />      
         </div>
     )
-};
+}
 
 const TitleText = styled.div`
-    width: 247px;
+    width: 300px;
     height: 35px;
-
-    margin-top: 83px;
-    margin-bottom: 0px;
-    margin-left: 20px;
 
     font-family: Spoqa Han Sans Neo;
     font-style: normal;
@@ -42,15 +41,15 @@ const TitleText = styled.div`
     line-height: 35px;
 
     color: #2F69FF;
+
+    margin-left: 20px;
+    margin-top: 83px;
+    margin-bottom: 0px;
 `;
 
 const SubText = styled.div`
-    width: 247px;
+    width: 300px;
     height: 35px;
-
-    margin-top: 1px;
-    margin-bottom: 20px;
-    margin-left: 20px;
 
     font-family: Spoqa Han Sans Neo;
     font-style: normal;
@@ -58,10 +57,14 @@ const SubText = styled.div`
     font-size: 22px;
     line-height: 35px;
 
+    margin-left: 20px;
+    margin-top: 1px;
+    margin-bottom: 10px;
+
     color: #112364;
 `;
 
-const InputMoney = styled.div`
+const InputText = styled.div`
     margin-top: 9px;
     margin-left: 21px;
 
@@ -77,7 +80,7 @@ const InputMoney = styled.div`
     color: #2F69FF;
 `;
 
-const MoneyInput = styled.input`
+const Input = styled.input`
     margin-left: 14px;
     border: 0px;
     border-bottom: 1px solid #112364;
@@ -98,5 +101,4 @@ const MoneyInput = styled.input`
         outline: none;
     }
 `;
-
-export default MoneySelect;
+export default DeadLineInput;

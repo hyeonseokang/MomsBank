@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Main from './components/main';
 import Check from './components/check/Check';
 import Transfer from './components/transfer';
+import Deposit from './components/deposit';
 import Success from './components/success';
 import {Route, Routes} from 'react-router-dom';
 
@@ -11,6 +12,7 @@ function App() {
           <Route path="/" exact={true} component={Main} />
           <Route path="/check" component = {Check} />
           <Route path="/transfer" component = {Transfer} />
+          <Route path="/deposit" component = {Deposit} />
           <Route path="/success" component={Success} />
       </Wrap>
   );

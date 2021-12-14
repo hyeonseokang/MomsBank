@@ -47,6 +47,10 @@ const Main = ({history}) => {
       history.push('/transfer');
     }
 
+    const GoDeposit = () => {
+      history.push('/deposit');
+    }
+
     return (
         <Div>
             <Title></Title>
@@ -64,7 +68,7 @@ const Main = ({history}) => {
                     무엇을 하시겠습니까?
                   </ActivityText>
                   <Block onClick = {GoTransfer} icon={transferIcon} mainText={"돈 옮기기"} subText={"현재 쓰시고 계시는 현서 통장에서\n원하는 곳으로 돈을 옮길수 있습니다."}/>
-                  <Block icon={bankIcon} mainText={"입금 요청"} subText={"돈을 빌립니다.\n기한내에 돈을 갚아야 합니다."}/>
+                  <Block onClick = {GoDeposit} icon={bankIcon} mainText={"입금 요청"} subText={"돈을 빌립니다.\n기한내에 돈을 갚아야 합니다."}/>
                 </MenuBlock>
             </MenuBlockDiv>
         </Div>
