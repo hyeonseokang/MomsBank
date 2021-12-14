@@ -1,7 +1,7 @@
 const express = require('express');
 const { Account, Transfer } = require('../models');
 const { get_account } = require('../util/models');
-
+const {encrypt, decrypt} = require('../util/cryptohs');
 const router = express.Router();
 
 router.post('/add', async (req, res) => {
@@ -14,7 +14,12 @@ router.post('/add', async (req, res) => {
     });
 
     if (!( name === undefined || bank_name === undefined || account_number === undefined)){
-        const account = await get_account(name, bank_name, account_number);
+        console.log("key: ", process.env.CRYPTO_KEY);
+        const crypto_name = encrypt(name, process.env.CRYPTO_KEY);
+        const crypto_bank_name = encrypt(bank_name, process.env.CRYPTO_KEY);
+        const crypto_account_number = encrypt(account_number, process.env.CRYPTO_KEY);
+        
+        const account = await get_account(crypto_name, crypto_bank_name, crypto_account_number);
         await account.addTransfer(transfer);
     }
 

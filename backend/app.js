@@ -7,7 +7,6 @@ const getAll = require('./routes/getAll');
 
 const {sequelize} = require('./models');
 
-
 const app = express();
 app.set('port', process.env.PORT || 8000);
 
