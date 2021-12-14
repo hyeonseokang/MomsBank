@@ -2,7 +2,7 @@ import styled from "styled-components";
 import MenuBlock from "../MenuBlock";
 import NextButton from "../NextButton";
 
-const Confirm = ({onClick, amount, text}) => {
+const Confirm = ({onClick, amount, text, deadline}) => {
     return (
         <div>
             <TitleText>확인</TitleText>
@@ -11,6 +11,8 @@ const Confirm = ({onClick, amount, text}) => {
                 <TextDiv>
                     <AmountText>{amount}</AmountText>
                     <Text>{text}</Text>
+                    <AmountText>{deadline} 까지</AmountText>
+                    <Text>{" 돈을 상환할게요."}</Text>
                 </TextDiv>
             </MenuBlock>
             <NextButton onClick={onClick} text={"생성"} mt="17px"></NextButton>

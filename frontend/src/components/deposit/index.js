@@ -36,7 +36,7 @@ const Deposit = ({history}) => {
         setInputId(id + 1);
         setPrevClick(()=>{
             setInputId(id);
-            if (id === 0)
+            if (id === 1)
                 setPrevClick(GoHome);
             else
                 setPrevClick(()=>{setInputId(id - 1);})
@@ -70,9 +70,10 @@ const Deposit = ({history}) => {
             return <BankInput subText="은행 이름과 계좌번호는 필수 입니다." nextClick={(data) => {selectBankInput(data, id);}}/>
         else if(id == 3)
             return <DeadLineInput nextClick={(value)=>{selectStep("deadline", value, id);}} amount={deposit.amount}></DeadLineInput>
-        // else if(id === 4)
-        //     return <Confirm onClick={createDeposit} amount="100000" text={`원을\n현서의 ${deposit.sbank_name} 계좌에서\n\n ${deposit.name} ${transfer.bank_name}
-        //     ${transfer.account_number} 으로 \n 옮길게요.`}/>
+        else if(id === 4)
+            return <Confirm onClick={createDeposit} amount={deposit.amount} text={`원을\n\n${deposit.name} ${deposit.bank_name}
+            ${deposit.account_number}으로
+            입금 할게요.\n\n`} deadline={deposit.deadline}/>
     }
 
 

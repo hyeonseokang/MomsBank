@@ -10,8 +10,7 @@ const DeadLineInput = ({amount, nextClick}) => {
     const [deadline, setDeadLine] = useState("222");
 
     const onChangeDate = (e) => {
-        const date = getDateString(e.target.value);
-        setDeadLine(date);
+        setDeadLine(e.target.value);
     }
 
     const onClick = () => {
@@ -19,7 +18,7 @@ const DeadLineInput = ({amount, nextClick}) => {
     };
     return (
         <div>
-            <TitleText>{deadline} 까지</TitleText>
+            <TitleText>{getDateString(deadline)} 까지</TitleText>
             <SubText>{`${amount}원을 상환 할게요.`}</SubText>
             <MenuBlock height="106px">
                 <InputText>날짜</InputText>
