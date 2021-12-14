@@ -21,8 +21,14 @@ sequelize.sync({force: false})
     .catch((err) => {
         console.error(err);
     });
+    
+if (process.env.NODE_ENV === 'production') {
+    app.use(margan('combined'));
+}
+else {
+    app.use(morgan('dev'));
+}
 
-app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
