@@ -3,8 +3,8 @@ const Account = require('./account');
 const Deposit = require('./deposit');
 const Transfer = require('./transfer');
 
-const env = process.env.NODE_ENV || 'development';
-const config = require('../config/config')[env];
+const env = process.env.DATABASE || 'development';
+const config = require('../config/config.js')[env];
 const db = {};
 
 const sequelize = new Sequelize(config.database, config.username, config.password
