@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+import Main from './components/main';
+import Check from './components/check/Check';
+import Transfer from './components/transfer';
+import Deposit from './components/deposit';
+import Success from './components/success';
+import {Route, Routes} from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Wrap>
+          <Route path="/" exact={true} component={Main} />
+          <Route path="/check" component = {Check} />
+          <Route path="/transfer" component = {Transfer} />
+          <Route path="/deposit" component = {Deposit} />
+          <Route path="/success" component={Success} />
+      </Wrap>
   );
 }
+
+const Wrap = styled.div`
+  width: 390px;
+  height: 844px;
+  margin: 0 auto;
+  box-shadow: 0 1px 10px rgb(0 0 0 / 20%);
+  overflow: hidden;
+`;
 
 export default App;
