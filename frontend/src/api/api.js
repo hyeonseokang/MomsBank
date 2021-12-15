@@ -3,7 +3,7 @@ import axios from 'axios';
 const development = 'http://localhost:80';
 const production = 'http://momsbank.co.kr:80';
 
-const baseURL = development;
+const baseURL = production;
 const baseService = axios.create({
     baseURL: baseURL.toString(),
     'Content-Type': 'application/json',

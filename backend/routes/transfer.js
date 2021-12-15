@@ -14,7 +14,6 @@ router.post('/add', async (req, res) => {
     });
 
     if (!( name === undefined || bank_name === undefined || account_number === undefined)){
-        console.log("key: ", process.env.CRYPTO_KEY);
         const crypto_name = encrypt(name, process.env.CRYPTO_KEY);
         const crypto_bank_name = encrypt(bank_name, process.env.CRYPTO_KEY);
         const crypto_account_number = encrypt(account_number, process.env.CRYPTO_KEY);

@@ -1,14 +1,18 @@
 const express = require('express');
 const { Account }  = require('../models');
 const { Deposit } = require('../models');
+const {encrypt, decrypt} = require('../util/cryptohs');
 const { get_account } = require('../util/models');
 const router = express.Router();
 
 router.post('/add', async (req, res) => {
     const body = req.body;
     const {name, bank_name, account_number, amount, deadline} = body;
-    
-    const account = await get_account(name, bank_name, account_number);
+
+    const crypto_name = encrypt(name, process.env.CRYPTO_KEY);
+    const crypto_bank_name = encrypt(bank_name, process.env.CRYPTO_KEY);
+    const crypto_account_number = encrypt(account_number, process.env.CRYPTO_KEY);
+    const account = await get_account(crypto_name, crypto_bank_name, crypto_account_number);
     const deposit = await Deposit.create({
         amount: amount,
         deadline: deadline,
