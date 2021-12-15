@@ -16,7 +16,7 @@ const Check = ({history}) => {
     }, []);
 
     const GoHome = () => {
-        history.goBack();
+        history.push('/');
     }
 
     return (
