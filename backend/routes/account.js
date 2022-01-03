@@ -5,17 +5,17 @@ const router = express.Router();
 
 router.get('/getall', async (req, res) => {
     const deposits = await Deposit.findAll();
-    deposits.map(async deposit => {
+    await Promise.all(deposits.map(async deposit => {
         const account = await deposit.getAccount();
         deposit.dataValues.account = {
             name: decrypt(account.name),
             bank_name: decrypt(account.bank_name),
             account_number: decrypt(account.account_number),
         };
-    })
+    }));
 
     const transfers = await Transfer.findAll();
-    transfers.map(async transfer => {
+    await Promise.all(transfers.map(async transfer => {
         const account = await transfer.getAccount();
         if (account === null)
             return;
@@ -25,7 +25,8 @@ router.get('/getall', async (req, res) => {
             bank_name: decrypt(account.bank_name),
             account_number: decrypt(account.account_number),
         };
-    })
+    }));
+    
     const json = {
         ...deposits,
         ...transfers,
