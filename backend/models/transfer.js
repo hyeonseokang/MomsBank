@@ -23,6 +23,6 @@ module.exports = class Transfer extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.Deposit.belongsTo(db.Account, {foreignKey: 'account_holder', targetKey: 'id'});
+        db.Transfer.belongsTo(db.Account, {foreignKey: 'account_holder', targetKey: 'id'});
     }
 }
